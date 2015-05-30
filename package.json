@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "browserify ./lib/vector.js -t babelify -o index.js -s vectorjs",
-    "test": "npm run build && node ./test"
+    "test": "mocha"
   },
   "keywords": [
     "vector",
@@ -21,8 +21,5 @@
   "devDependencies": {
     "babelify": "^6.1.2",
     "browserify": "^10.2.3"
-  },
-  "dependencies": {
-    "object-assign": "^2.0.0"
   }
 }

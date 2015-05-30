@@ -7,13 +7,7 @@ Object.defineProperty(exports, '__esModule', {
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-var _objectAssign = require('object-assign');
-
-var _objectAssign2 = _interopRequireDefault(_objectAssign);
 
 var RAD = 180 / Math.PI;
 
@@ -48,7 +42,7 @@ var VectorClass = (function () {
 		/**
    *
    * @param {Vector} b The vector to add
-   * @return {Vecto} the sum
+   * @return {Vector} the sum
    */
 
 		value: function add(b) {
@@ -83,6 +77,36 @@ var VectorClass = (function () {
 		key: 'normalize',
 		value: function normalize(b) {
 			return Vector.normalize(this);
+		}
+	}, {
+		key: 'angle',
+		value: function angle(b) {
+			return Vector.angle(this, b);
+		}
+	}, {
+		key: 'angleRad',
+		value: function angleRad(b) {
+			return Vector.angleRad(this, b);
+		}
+	}, {
+		key: 'angleDeg',
+		value: function angleDeg(b) {
+			return Vector.angleDeg(this, b);
+		}
+	}, {
+		key: 'clone',
+		value: function clone() {
+			return new Vector(this.x, this.y);
+		}
+	}, {
+		key: 'equals',
+		value: function equals(b) {
+			return Vector.equals(this, b);
+		}
+	}, {
+		key: 'toString',
+		value: function toString() {
+			return '' + this.x + ',' + this.y;
 		}
 	}], [{
 		key: 'add',
@@ -224,14 +248,7 @@ var VectorClass = (function () {
    */
 
 		value: function angleRad(a, b) {
-			var magA = Vector.len(a);
-			var magB = Vector.len(b);
-
-			console.log(magA, magB);
-
-			var dot = Vector.mul(a, b);
-
-			return Math.acos((dot.x + dot.y) / (magA * magB));
+			return Math.acos(Vector.angleCos(a, b));
 		}
 	}, {
 		key: 'angleDeg',
@@ -245,7 +262,26 @@ var VectorClass = (function () {
    */
 
 		value: function angleDeg(a, b) {
-			return Vector.radToDeg(Vector.angleRad(a, b));
+			return Vector.angleRad(a, b) * RAD;
+		}
+	}, {
+		key: 'angleCos',
+
+		/**
+   * Get the angle between two vectors in cosin
+   *
+   * @param {Vector | {x: number, y: number}} a
+   * @param {Vector | {x: number, y: number}} b
+   * @return {Number} the angle between the two vectors before `Math.acos()`
+   */
+
+		value: function angleCos(a, b) {
+			var magA = Vector.len(a);
+			var magB = Vector.len(b);
+
+			var dot = Vector.mul(a, b);
+
+			return (dot.x + dot.y) / (magA * magB);
 		}
 	}, {
 		key: 'dot',
@@ -255,14 +291,12 @@ var VectorClass = (function () {
    *
    * @param {Vector | {x: number, y: number}} a
    * @param {Vector | {x: number, y: number}} b
-   * @return {Number} the angle between the two vectors
+   * @return {Number} the dot product
    */
 
 		value: function dot(a, b) {
 			var magA = Vector.len(a);
 			var magB = Vector.len(b);
-
-			console.log(magA, magB);
 
 			return Math.acos(Vector.mul(a, b) / (magA * magB));
 		}
@@ -277,9 +311,9 @@ var VectorClass = (function () {
 			return new Vector(a.x, a.y);
 		}
 	}, {
-		key: 'radToDeg',
-		value: function radToDeg(rad) {
-			return rad * RAD;
+		key: 'equals',
+		value: function equals(a, b) {
+			return a.x === b.x && a.y === b.y;
 		}
 	}]);
 
@@ -297,34 +331,6 @@ Vector.prototype = VectorClass.prototype;
 
 exports['default'] = Vector;
 module.exports = exports['default'];
-
-},{"object-assign":2}],2:[function(require,module,exports){
-'use strict';
-
-function ToObject(val) {
-	if (val == null) {
-		throw new TypeError('Object.assign cannot be called with null or undefined');
-	}
-
-	return Object(val);
-}
-
-module.exports = Object.assign || function (target, source) {
-	var from;
-	var keys;
-	var to = ToObject(target);
-
-	for (var s = 1; s < arguments.length; s++) {
-		from = arguments[s];
-		keys = Object.keys(Object(from));
-
-		for (var i = 0; i < keys.length; i++) {
-			to[keys[i]] = from[keys[i]];
-		}
-	}
-
-	return to;
-};
 
 },{}]},{},[1])(1)
 });
