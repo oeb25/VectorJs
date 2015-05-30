@@ -1,0 +1,24 @@
+{
+  "name": "VectorJS",
+  "version": "0.0.1",
+  "description": "A vector libary, that's it",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify ./lib/vector.js -t babelify -o index.js -s vectorjs",
+    "test": "npm run build && node ./test"
+  },
+  "keywords": [
+    "vector",
+    "math",
+    "2d"
+  ],
+  "author": "Oliver Bøving",
+  "license": "ISC",
+  "devDependencies": {
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.3"
+  },
+  "dependencies": {
+    "object-assign": "^2.0.0"
+  }
+}
