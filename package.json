@@ -1,8 +1,12 @@
 {
-  "name": "VectorJs",
+  "name": "vectorjs",
   "version": "0.0.1",
-  "description": "A vector libary, that's it",
+  "description": "A 2D vector libary.",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oeb25/VectorJs"
+  },
   "scripts": {
     "build": "browserify ./lib/vector.js -t babelify -o index.js -s vectorjs",
     "test": "npm run build && node ./test"

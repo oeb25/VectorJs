@@ -17,23 +17,78 @@ var _objectAssign2 = _interopRequireDefault(_objectAssign);
 
 var RAD = 180 / Math.PI;
 
-var Vector = (function () {
-	function Vector() {
+var VectorClass = (function () {
+
+	/**
+  * Constructor for the Vector class
+  *
+  * @param {Number =} x
+  * @param {Number =} y
+  * @return {Vector} A vector of `x` and `y`
+  */
+
+	function VectorClass() {
 		var x = arguments[0] === undefined ? 0 : arguments[0];
 		var y = arguments[1] === undefined ? x : arguments[1];
 		return (function () {
-			_classCallCheck(this, Vector);
+			_classCallCheck(this, VectorClass);
 
 			this.x = x;
 			this.y = y;
 		}).apply(this, arguments);
 	}
 
-	_createClass(Vector, null, [{
+	_createClass(VectorClass, [{
 		key: 'add',
 
 		/*
-  		Math functions
+  		Class math functions
+  	*/
+
+		/**
+   *
+   * @param {Vector} b The vector to add
+   * @return {Vecto} the sum
+   */
+
+		value: function add(b) {
+			return Vector.add(this, b);
+		}
+	}, {
+		key: 'sub',
+		value: function sub(b) {
+			return Vector.sub(this, b);
+		}
+	}, {
+		key: 'mul',
+		value: function mul(b) {
+			return Vector.mul(this, b);
+		}
+	}, {
+		key: 'div',
+		value: function div(b) {
+			return Vector.div(this, b);
+		}
+	}, {
+		key: 'lenSq',
+		value: function lenSq(b) {
+			return Vector.lenSq(this);
+		}
+	}, {
+		key: 'len',
+		value: function len(b) {
+			return Vector.len(this);
+		}
+	}, {
+		key: 'normalize',
+		value: function normalize(b) {
+			return Vector.normalize(this);
+		}
+	}], [{
+		key: 'add',
+
+		/*
+  		Static math functions
   	*/
 
 		/**
@@ -224,20 +279,23 @@ var Vector = (function () {
 	}, {
 		key: 'radToDeg',
 		value: function radToDeg(rad) {
-			console.log(RAD);
-
 			return rad * RAD;
 		}
 	}]);
 
-	return Vector;
+	return VectorClass;
 })();
 
-exports['default'] = Vector;
+// Convertion from ES6 to factory. Code stolen from `https://github.com/timoxley/to-factory`
 
-Vector[Symbol.call] = function (x, y) {
-	return new Vector(x, y);
+var Vector = function Vector(x, y) {
+	return new VectorClass(x, y);
 };
+
+Vector.__proto__ = VectorClass;
+Vector.prototype = VectorClass.prototype;
+
+exports['default'] = Vector;
 module.exports = exports['default'];
 
 },{"object-assign":2}],2:[function(require,module,exports){

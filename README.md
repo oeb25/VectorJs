@@ -4,7 +4,7 @@ A 2D Vector libary for JavaScript. That's it!
 
 ## Installation
 
-`npm i vectorjs`
+`npm install vectorjs`
 
 ## Usage
 
@@ -18,6 +18,15 @@ var ab = a.add(b);
 
 console.log(a, b);
 // => { x: 7, y: 5 }
+```
+
+Usage without `new` is also supported
+
+```javascript
+var a = new Vector(2, 2);
+// works the same as
+var a = Vector(2, 2);
+
 ```
 
 ## Contributing
