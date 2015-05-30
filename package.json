@@ -1,6 +1,6 @@
 {
   "name": "vectorjs",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A 2D vector libary.",
   "main": "index.js",
   "repository": {
