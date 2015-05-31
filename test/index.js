@@ -1,6 +1,6 @@
 var assert = require('assert');
 
-var Vector = require('./');
+var Vector = require('../');
 
 describe('Vector', function() {
   describe('Construction', function() {

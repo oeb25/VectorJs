@@ -17,7 +17,7 @@
     "2d"
   ],
   "author": "Oliver Bøving",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babelify": "^6.1.2",
     "browserify": "^10.2.3",

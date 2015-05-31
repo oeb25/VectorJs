@@ -27,30 +27,12 @@ var VectorClass = (function () {
     return (function () {
       _classCallCheck(this, VectorClass);
 
-      this._value = new Float32Array(2);
-
-      this._value[0] = x;
-      this._value[1] = y;
+      this.x = x;
+      this.y = y;
     }).apply(this, arguments);
   }
 
   _createClass(VectorClass, [{
-    key: 'x',
-    get: function () {
-      return this._value[0];
-    },
-    set: function (x) {
-      this._value[0] = x;
-    }
-  }, {
-    key: 'y',
-    get: function () {
-      return this._value[1];
-    },
-    set: function (y) {
-      this._value[1] = y;
-    }
-  }, {
     key: 'add',
 
     /*
@@ -83,17 +65,17 @@ var VectorClass = (function () {
     }
   }, {
     key: 'lenSq',
-    value: function lenSq(b) {
+    value: function lenSq() {
       return Vector.lenSq(this);
     }
   }, {
     key: 'len',
-    value: function len(b) {
+    value: function len() {
       return Vector.len(this);
     }
   }, {
     key: 'normalize',
-    value: function normalize(b) {
+    value: function normalize() {
       return Vector.normalize(this);
     }
   }, {
@@ -114,7 +96,7 @@ var VectorClass = (function () {
   }, {
     key: 'clone',
     value: function clone() {
-      return new Vector(this._value[0], this._value[1]);
+      return new Vector(this.x, this.y);
     }
   }, {
     key: 'equals',
@@ -124,7 +106,7 @@ var VectorClass = (function () {
   }, {
     key: 'toString',
     value: function toString() {
-      return '' + this._value[0] + ',' + this._value[1];
+      return '' + this.x + ',' + this.y;
     }
   }], [{
     key: 'add',
@@ -145,8 +127,8 @@ var VectorClass = (function () {
     value: function add(a, b) {
       if (typeof b === 'number') b = new Vector(b);
 
-      var x = a._value[0] + b._value[0];
-      var y = a._value[1] + b._value[1];
+      var x = a.x + b.x;
+      var y = a.y + b.y;
 
       return new Vector(x, y);
     }
@@ -165,8 +147,8 @@ var VectorClass = (function () {
     value: function sub(a, b) {
       if (typeof b === 'number') b = new Vector(b);
 
-      var x = a._value[0] - b._value[0];
-      var y = a._value[1] - b._value[1];
+      var x = a.x - b.x;
+      var y = a.y - b.y;
 
       return new Vector(x, y);
     }
@@ -185,8 +167,8 @@ var VectorClass = (function () {
     value: function mul(a, b) {
       if (typeof b === 'number') b = new Vector(b);
 
-      var x = a._value[0] * b._value[0];
-      var y = a._value[1] * b._value[1];
+      var x = a.x * b.x;
+      var y = a.y * b.y;
 
       return new Vector(x, y);
     }
@@ -205,8 +187,8 @@ var VectorClass = (function () {
     value: function div(a, b) {
       if (typeof b === 'number') b = new Vector(b);
 
-      var x = a._value[0] / b._value[0];
-      var y = a._value[1] / b._value[1];
+      var x = a.x / b.x;
+      var y = a.y / b.y;
 
       return new Vector(x, y);
     }
@@ -221,8 +203,8 @@ var VectorClass = (function () {
      */
 
     value: function len(a) {
-      var x = a._value[0] * a._value[0];
-      var y = a._value[1] * a._value[1];
+      var x = a.x * a.x;
+      var y = a.y * a.y;
 
       return Math.sqrt(x + y);
     }
@@ -238,8 +220,8 @@ var VectorClass = (function () {
      */
 
     value: function lenSq(a) {
-      var x = a._value[0] * a._value[0];
-      var y = a._value[1] * a._value[1];
+      var x = a.x * a.x;
+      var y = a.y * a.y;
 
       return x + y;
     }
@@ -256,7 +238,7 @@ var VectorClass = (function () {
     value: function normalize(a) {
       var mag = Vector.len(a);
 
-      return new Vector(a._value[0] / mag, a._value[1] / mag);
+      return new Vector(a.x / mag, a.y / mag);
     }
   }, {
     key: 'angle',
@@ -317,7 +299,7 @@ var VectorClass = (function () {
 
       var dot = Vector.mul(a, b);
 
-      return (dot._value[0] + dot._value[1]) / (magA * magB);
+      return (dot.x + dot.y) / (magA * magB);
     }
   }, {
     key: 'dot',
@@ -337,19 +319,31 @@ var VectorClass = (function () {
       return Math.acos(Vector.mul(a, b) / (magA * magB));
     }
   }, {
-    key: 'clone',
+    key: 'random',
 
     /*
        Helper methods
      */
 
+    value: function random() {
+      var min = arguments[0] === undefined ? 0 : arguments[0];
+      var max = arguments[1] === undefined ? min + 1 : arguments[1];
+      return (function () {
+        var x = Math.random() * (max - min) + min;
+        var y = Math.random() * (max - min) + min;
+
+        return new Vector(x, y);
+      })();
+    }
+  }, {
+    key: 'clone',
     value: function clone(a) {
-      return new Vector(a._value[0], a._value[1]);
+      return new Vector(a.x, a.y);
     }
   }, {
     key: 'equals',
     value: function equals(a, b) {
-      return a._value[0] === b._value[0] && a._value[1] === b._value[1];
+      return a.x === b.x && a.y === b.y;
     }
   }]);
 
