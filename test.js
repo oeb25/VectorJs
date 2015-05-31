@@ -35,12 +35,15 @@ describe('Vector', function() {
     var a = Vector(5, 10);
     var b = Vector(6, 2);
 
+    var aString = a.x + ',' + a.y;
+    var bString = b.x + ',' + b.y;
+
     describe('#toString()', function() {
-      it(`should return '${a.x},${a.y}'`, function() {
-        assert.equal(`${a.x},${a.y}`, a.toString());
+      it('should return ' + aString, function() {
+        assert.equal(aString, a.toString());
       });
-      it(`should return '${b.x},${b.y}'`, function() {
-        assert.equal(`${b.x},${b.y}`, b.toString());
+      it('should return ' + bString, function() {
+        assert.equal(bString, b.toString());
       });
     });
 
@@ -145,8 +148,8 @@ describe('Vector', function() {
         assert.equal(a.angleDeg(b), a.angle(b));
       });
 
-      it(`should return the same from #angle() and
-          #angleRad() but in rad and deg`, function() {
+      it('should return the same from #angle() and' +
+        ' #angleRad() but in rad and deg', function() {
         assert.equal(a.angle(b), a.angleRad(b) * 180 / Math.PI);
       });
     });
