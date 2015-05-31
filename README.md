@@ -12,6 +12,7 @@ A 2D Vector class for JavaScript. That's it!
 ### Building
 
 `$ npm run build`
+
 `$ npm run test`
 
 ## Usage
@@ -24,7 +25,7 @@ var b = new Vector(5, 3);
 
 var ab = a.add(b);
 
-console.log(a, b);
+console.log(ab);
 // => { x: 7, y: 5 }
 ```
 
