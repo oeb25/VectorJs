@@ -1,6 +1,7 @@
 # VectorJs
 
 [![Join the chat at https://gitter.im/oeb25/VectorJs](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/oeb25/VectorJs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Travis tesing](https://travis-ci.org/oeb25/VectorJs.svg?branch=master)](https://travis-ci.org/oeb25/VectorJs)
 
 A 2D Vector class for JavaScript. That's it!
 
