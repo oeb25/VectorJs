@@ -43,7 +43,7 @@ None of the methods are mutable, which means that they wont modify the caller, b
 
 #### .add(amount): Vector
 
-Retruns the vector sum of the two vectors
+Returns the vector sum of the two vectors
 
 `amount` can be either a `Number` or a `Vector`
 
@@ -81,7 +81,7 @@ Returns the length of the Vector. Alternatively use .lenSq()
 
 #### .lenSq(): Number
 
-Returns the squared length of the Vector. Usefull for comparing two vectors
+Returns the squared length of the Vector. Useful for comparing two vectors
 
 ---
 
@@ -123,9 +123,9 @@ Returns the a copy or clone of the vector
 
 #### .equals(other): Boolean
 
-Returns wether the `x` and `y` of the vectors are the same.
+Returns whether the `x` and `y` of the vectors are the same.
 
-This is here since JavaScript is wierd and doesen't do.
+This is here since JavaScript is weird and doesn't do.
 
 ```javascript
 { x: 2, y: 3 } === { x: 2, y: 3 }
@@ -149,9 +149,13 @@ a.len() <=> Vector.len(a)
 // etc...
 ```
 
+## Motivation
+
+In the past weeks, I've wrote multiple vector classes for every single one of my games, each with a diff rent implementation. I needed something that was as simple as `v(2, 1).add(3)` and was easy to install. If you're looking for a super high performance vector library for rendering thousands of particles, this one might not be the one. Although if you do, [send it to me please](mailto:lvrmlbvng@gmail.com)!
+
 ## Misconceptions
 
-The source it self is written in `ES6`, but is transpiled to pure `ES5` and is ready to be requied and used without a precompiler nor transpiler.
+The source it self is written in `ES6`, but is transpiled to pure `ES5` and is ready to be required and used without a precompiler nor transpiler.
 
 ## Contributing
 
@@ -169,4 +173,5 @@ Thanks to [Tribuadore](http://www.reddit.com/user/Tribuadore) on reddit for poin
 
 ## License
 
-TODO: Write license
+The MIT License (MIT)
+
