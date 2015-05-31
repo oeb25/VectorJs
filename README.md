@@ -6,7 +6,12 @@ A 2D Vector class for JavaScript. That's it!
 
 ## Installation
 
-`npm install vectorjs`
+`$ npm install vectorjs`
+
+### Building
+
+`$ npm run build`
+`$ npm run test`
 
 ## Usage
 
@@ -28,8 +33,125 @@ Usage without `new` is also supported
 var a = new Vector(2, 2);
 // works the same as
 var a = Vector(2, 2);
-
 ```
+
+### Methods
+
+None of the methods are mutable, which means that they wont modify the caller, but rather return a new `Vector`
+
+---
+
+#### .add(amount): Vector
+
+Retruns the vector sum of the two vectors
+
+`amount` can be either a `Number` or a `Vector`
+
+---
+
+#### .sub(amount): Vector
+
+Returns caller subtracted by the amount
+
+`amount` can be either a `Number` or a `Vector`
+
+---
+
+#### .mul(amount): Vector
+
+Returns the result of caller multiplied by the amount
+
+`amount` being either a `Number` or a `Vector`
+
+---
+
+#### .div(amount): Vector
+
+Returns the result of caller divided by the amount
+
+`amount` being either a `Number` or a `Vector`
+
+---
+
+#### .len(): Number
+
+Returns the length of the Vector. Alternatively use .lenSq()
+
+---
+
+#### .lenSq(): Number
+
+Returns the squared length of the Vector. Usefull for comparing two vectors
+
+---
+
+#### .normalize(): Vector
+
+Returns the normal of the Vector. This is a unit sized Vector
+
+---
+
+#### .angle(other): Number
+
+Returns the angle between calle and `other` in degrees. Alias for `.angleDeg()`
+
+`other` being the other vector
+
+---
+
+#### .angleDeg(other): Number
+
+Returns the angle between calle and `other` in degrees. Returns the same as `.angle()`
+
+`other` being the other vector
+
+---
+
+#### .angleRad(other): Number
+
+Returns the angle between calle and `other` in radian.
+
+`other` being the other vector
+
+---
+
+#### .clone(): Vector
+
+Returns the a copy or clone of the vector
+
+---
+
+#### .equals(other): Boolean
+
+Returns wether the `x` and `y` of the vectors are the same.
+
+This is here since JavaScript is wierd and doesen't do.
+
+```javascript
+{ x: 2, y: 3 } === { x: 2, y: 3 }
+// => false
+
+Vector.equals({ x: 2, y: 3 }, { x: 2, y: 3 })
+// => true
+```
+
+They have their reasons.
+
+`other` being the other vector
+
+---
+
+All of these functions can also be called from the class it self, as shown below.
+
+```javascript
+a.add(b) <=> Vector.add(a, b)
+a.len() <=> Vector.len(a)
+// etc...
+```
+
+## Misconceptions
+
+The source it self is written in `ES6`, but is transpiled to pure `ES5` and is ready to be requied and used without a precompiler nor transpiler.
 
 ## Contributing
 
@@ -39,13 +161,11 @@ var a = Vector(2, 2);
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
-## History
-
-TODO: Write history
-
 ## Credits
 
-TODO: Write credits
+Thanks to [timoxley](https://github.com/timoxley/to-factory) for supporting me with a wrapper for class to factory.
+
+Thanks to [Tribuadore](http://www.reddit.com/user/Tribuadore) on reddit for pointing out this wasn't a "propper" "libary", but rather just a class.
 
 ## License
 
