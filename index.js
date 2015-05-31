@@ -2,7 +2,7 @@
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
-	value: true
+  value: true
 });
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
@@ -13,353 +13,353 @@ var RAD = 180 / Math.PI;
 
 var VectorClass = (function () {
 
-	/**
-  * Constructor for the Vector class
-  *
-  * @param {Number =} x
-  * @param {Number =} y
-  * @return {Vector} A vector of `x` and `y`
-  */
-
-	function VectorClass() {
-		var x = arguments[0] === undefined ? 0 : arguments[0];
-		var y = arguments[1] === undefined ? x : arguments[1];
-		return (function () {
-			_classCallCheck(this, VectorClass);
-
-			this._value = new Float32Array(2);
-
-			this._value[0] = x;
-			this._value[1] = y;
-		}).apply(this, arguments);
-	}
-
-	_createClass(VectorClass, [{
-		key: 'x',
-		get: function () {
-			return this._value[0];
-		},
-		set: function (x) {
-			this._value[0] = x;
-		}
-	}, {
-		key: 'y',
-		get: function () {
-			return this._value[1];
-		},
-		set: function (y) {
-			this._value[1] = y;
-		}
-	}, {
-		key: 'add',
-
-		/*
-  		Class math functions
-  	*/
-
-		/**
+  /**
+   * Constructor for the Vector class
    *
-   * @param {Vector} b The vector to add
-   * @return {Vector} the sum
+   * @param {Number =} x
+   * @param {Number =} y
+   * @return {Vector} A vector of `x` and `y`
    */
 
-		value: function add(b) {
-			return Vector.add(this, b);
-		}
-	}, {
-		key: 'sub',
-		value: function sub(b) {
-			return Vector.sub(this, b);
-		}
-	}, {
-		key: 'mul',
-		value: function mul(b) {
-			return Vector.mul(this, b);
-		}
-	}, {
-		key: 'div',
-		value: function div(b) {
-			return Vector.div(this, b);
-		}
-	}, {
-		key: 'lenSq',
-		value: function lenSq(b) {
-			return Vector.lenSq(this);
-		}
-	}, {
-		key: 'len',
-		value: function len(b) {
-			return Vector.len(this);
-		}
-	}, {
-		key: 'normalize',
-		value: function normalize(b) {
-			return Vector.normalize(this);
-		}
-	}, {
-		key: 'angle',
-		value: function angle(b) {
-			return Vector.angle(this, b);
-		}
-	}, {
-		key: 'angleRad',
-		value: function angleRad(b) {
-			return Vector.angleRad(this, b);
-		}
-	}, {
-		key: 'angleDeg',
-		value: function angleDeg(b) {
-			return Vector.angleDeg(this, b);
-		}
-	}, {
-		key: 'clone',
-		value: function clone() {
-			return new Vector(this._value[0], this._value[1]);
-		}
-	}, {
-		key: 'equals',
-		value: function equals(b) {
-			return Vector.equals(this, b);
-		}
-	}, {
-		key: 'toString',
-		value: function toString() {
-			return '' + this._value[0] + ',' + this._value[1];
-		}
-	}], [{
-		key: 'add',
+  function VectorClass() {
+    var x = arguments[0] === undefined ? 0 : arguments[0];
+    var y = arguments[1] === undefined ? x : arguments[1];
+    return (function () {
+      _classCallCheck(this, VectorClass);
 
-		/*
-  		Static math functions
-  	*/
+      this._value = new Float32Array(2);
 
-		/**
-   * Add two vectors. If a `b` is a number, create
-   * a `Vector` from it.
-   *
-   * @param {Vector | {x: number, y: number}} a
-   * @param {Vector | {x: number, y: number} | number} b
-   * @return {Vector} the sum of the vectors
-   */
+      this._value[0] = x;
+      this._value[1] = y;
+    }).apply(this, arguments);
+  }
 
-		value: function add(a, b) {
-			if (typeof b === 'number') b = new Vector(b);
+  _createClass(VectorClass, [{
+    key: 'x',
+    get: function () {
+      return this._value[0];
+    },
+    set: function (x) {
+      this._value[0] = x;
+    }
+  }, {
+    key: 'y',
+    get: function () {
+      return this._value[1];
+    },
+    set: function (y) {
+      this._value[1] = y;
+    }
+  }, {
+    key: 'add',
 
-			var x = a._value[0] + b._value[0];
-			var y = a._value[1] + b._value[1];
+    /*
+       Class math functions
+     */
 
-			return new Vector(x, y);
-		}
-	}, {
-		key: 'sub',
+    /**
+     *
+     * @param {Vector} b The vector to add
+     * @return {Vector} the sum
+     */
 
-		/**
-   * Subtract two vectors. If a `b` is a number, create
-   * a `Vector` from it.
-   *
-   * @param {Vector | {x: number, y: number}} a
-   * @param {Vector | {x: number, y: number} | number} b
-   * @return {Vector} the result of subtracting `b` form `a`
-   */
+    value: function add(b) {
+      return Vector.add(this, b);
+    }
+  }, {
+    key: 'sub',
+    value: function sub(b) {
+      return Vector.sub(this, b);
+    }
+  }, {
+    key: 'mul',
+    value: function mul(b) {
+      return Vector.mul(this, b);
+    }
+  }, {
+    key: 'div',
+    value: function div(b) {
+      return Vector.div(this, b);
+    }
+  }, {
+    key: 'lenSq',
+    value: function lenSq(b) {
+      return Vector.lenSq(this);
+    }
+  }, {
+    key: 'len',
+    value: function len(b) {
+      return Vector.len(this);
+    }
+  }, {
+    key: 'normalize',
+    value: function normalize(b) {
+      return Vector.normalize(this);
+    }
+  }, {
+    key: 'angle',
+    value: function angle(b) {
+      return Vector.angle(this, b);
+    }
+  }, {
+    key: 'angleRad',
+    value: function angleRad(b) {
+      return Vector.angleRad(this, b);
+    }
+  }, {
+    key: 'angleDeg',
+    value: function angleDeg(b) {
+      return Vector.angleDeg(this, b);
+    }
+  }, {
+    key: 'clone',
+    value: function clone() {
+      return new Vector(this._value[0], this._value[1]);
+    }
+  }, {
+    key: 'equals',
+    value: function equals(b) {
+      return Vector.equals(this, b);
+    }
+  }, {
+    key: 'toString',
+    value: function toString() {
+      return '' + this._value[0] + ',' + this._value[1];
+    }
+  }], [{
+    key: 'add',
 
-		value: function sub(a, b) {
-			if (typeof b === 'number') b = new Vector(b);
+    /*
+       Static math functions
+     */
 
-			var x = a._value[0] - b._value[0];
-			var y = a._value[1] - b._value[1];
+    /**
+     * Add two vectors. If a `b` is a number, create
+     * a `Vector` from it.
+     *
+     * @param {Vector | {x: number, y: number}} a
+     * @param {Vector | {x: number, y: number} | number} b
+     * @return {Vector} the sum of the vectors
+     */
 
-			return new Vector(x, y);
-		}
-	}, {
-		key: 'mul',
+    value: function add(a, b) {
+      if (typeof b === 'number') b = new Vector(b);
 
-		/**
-   * Multiply two vectors. If a `b` is a number, create
-   * a `Vector` from it.
-   *
-   * @param {Vector | {x: number, y: number}} a
-   * @param {Vector | {x: number, y: number} | number} b
-   * @return {Vector} the product of the vectors
-   */
+      var x = a._value[0] + b._value[0];
+      var y = a._value[1] + b._value[1];
 
-		value: function mul(a, b) {
-			if (typeof b === 'number') b = new Vector(b);
+      return new Vector(x, y);
+    }
+  }, {
+    key: 'sub',
 
-			var x = a._value[0] * b._value[0];
-			var y = a._value[1] * b._value[1];
+    /**
+     * Subtract two vectors. If a `b` is a number, create
+     * a `Vector` from it.
+     *
+     * @param {Vector | {x: number, y: number}} a
+     * @param {Vector | {x: number, y: number} | number} b
+     * @return {Vector} the result of subtracting `b` form `a`
+     */
 
-			return new Vector(x, y);
-		}
-	}, {
-		key: 'div',
+    value: function sub(a, b) {
+      if (typeof b === 'number') b = new Vector(b);
 
-		/**
-   * Divide two vectors. If a `b` is a number, create
-   * a `Vector` from it.
-   *
-   * @param {Vector | {x: number, y: number}} a
-   * @param {Vector | {x: number, y: number} | number} b
-   * @return {Vector} the result of dividing `a` with `b`
-   */
+      var x = a._value[0] - b._value[0];
+      var y = a._value[1] - b._value[1];
 
-		value: function div(a, b) {
-			if (typeof b === 'number') b = new Vector(b);
+      return new Vector(x, y);
+    }
+  }, {
+    key: 'mul',
 
-			var x = a._value[0] / b._value[0];
-			var y = a._value[1] / b._value[1];
+    /**
+     * Multiply two vectors. If a `b` is a number, create
+     * a `Vector` from it.
+     *
+     * @param {Vector | {x: number, y: number}} a
+     * @param {Vector | {x: number, y: number} | number} b
+     * @return {Vector} the product of the vectors
+     */
 
-			return new Vector(x, y);
-		}
-	}, {
-		key: 'len',
+    value: function mul(a, b) {
+      if (typeof b === 'number') b = new Vector(b);
 
-		/**
-   * Get the length of a vector
-   *
-   * @param {Vector | {x: number, y: number}} a
-   * @return {Number} the length of vector `a`
-   */
+      var x = a._value[0] * b._value[0];
+      var y = a._value[1] * b._value[1];
 
-		value: function len(a) {
-			var x = a._value[0] * a._value[0];
-			var y = a._value[1] * a._value[1];
+      return new Vector(x, y);
+    }
+  }, {
+    key: 'div',
 
-			return Math.sqrt(x + y);
-		}
-	}, {
-		key: 'lenSq',
+    /**
+     * Divide two vectors. If a `b` is a number, create
+     * a `Vector` from it.
+     *
+     * @param {Vector | {x: number, y: number}} a
+     * @param {Vector | {x: number, y: number} | number} b
+     * @return {Vector} the result of dividing `a` with `b`
+     */
 
-		/**
-   * Get the length squared of a vector. Usefull for
-   * comparing two vectors
-   *
-   * @param {Vector | {x: number, y: number}} a
-   * @return {Number} the length squared of vector `a`
-   */
+    value: function div(a, b) {
+      if (typeof b === 'number') b = new Vector(b);
 
-		value: function lenSq(a) {
-			var x = a._value[0] * a._value[0];
-			var y = a._value[1] * a._value[1];
+      var x = a._value[0] / b._value[0];
+      var y = a._value[1] / b._value[1];
 
-			return x + y;
-		}
-	}, {
-		key: 'normalize',
+      return new Vector(x, y);
+    }
+  }, {
+    key: 'len',
 
-		/**
-   * Normalize a vector
-   *
-   * @param {Vector | {x: number, y: number}} a
-   * @return {Vector} the vector `a` normalized
-   */
+    /**
+     * Get the length of a vector
+     *
+     * @param {Vector | {x: number, y: number}} a
+     * @return {Number} the length of vector `a`
+     */
 
-		value: function normalize(a) {
-			var mag = Vector.len(a);
+    value: function len(a) {
+      var x = a._value[0] * a._value[0];
+      var y = a._value[1] * a._value[1];
 
-			return new Vector(a._value[0] / mag, a._value[1] / mag);
-		}
-	}, {
-		key: 'angle',
+      return Math.sqrt(x + y);
+    }
+  }, {
+    key: 'lenSq',
 
-		/**
-   * Get the angle between two vectors in degress
-   *
-   * @param {Vector | {x: number, y: number}} a
-   * @param {Vector | {x: number, y: number}} b
-   * @return {Number} the degree between the two vectors
-   */
+    /**
+     * Get the length squared of a vector. Usefull for
+     * comparing two vectors
+     *
+     * @param {Vector | {x: number, y: number}} a
+     * @return {Number} the length squared of vector `a`
+     */
 
-		value: function angle(a, b) {
-			return Vector.angleDeg(a, b);
-		}
-	}, {
-		key: 'angleRad',
+    value: function lenSq(a) {
+      var x = a._value[0] * a._value[0];
+      var y = a._value[1] * a._value[1];
 
-		/**
-   * Get the radian angle between two vectors
-   *
-   * @param {Vector | {x: number, y: number}} a
-   * @param {Vector | {x: number, y: number}} b
-   * @return {Number} the angle between the two vectors
-   */
+      return x + y;
+    }
+  }, {
+    key: 'normalize',
 
-		value: function angleRad(a, b) {
-			return Math.acos(Vector.angleCos(a, b));
-		}
-	}, {
-		key: 'angleDeg',
+    /**
+     * Normalize a vector
+     *
+     * @param {Vector | {x: number, y: number}} a
+     * @return {Vector} the vector `a` normalized
+     */
 
-		/**
-   * Get the angle between two vectors in degress
-   *
-   * @param {Vector | {x: number, y: number}} a
-   * @param {Vector | {x: number, y: number}} b
-   * @return {Number} the degree between the two vectors
-   */
+    value: function normalize(a) {
+      var mag = Vector.len(a);
 
-		value: function angleDeg(a, b) {
-			return Vector.angleRad(a, b) * RAD;
-		}
-	}, {
-		key: 'angleCos',
+      return new Vector(a._value[0] / mag, a._value[1] / mag);
+    }
+  }, {
+    key: 'angle',
 
-		/**
-   * Get the angle between two vectors in cosin
-   *
-   * @param {Vector | {x: number, y: number}} a
-   * @param {Vector | {x: number, y: number}} b
-   * @return {Number} the angle between the two vectors before `Math.acos()`
-   */
+    /**
+     * Get the angle between two vectors in degress
+     *
+     * @param {Vector | {x: number, y: number}} a
+     * @param {Vector | {x: number, y: number}} b
+     * @return {Number} the degree between the two vectors
+     */
 
-		value: function angleCos(a, b) {
-			var magA = Vector.len(a);
-			var magB = Vector.len(b);
+    value: function angle(a, b) {
+      return Vector.angleDeg(a, b);
+    }
+  }, {
+    key: 'angleRad',
 
-			var dot = Vector.mul(a, b);
+    /**
+     * Get the radian angle between two vectors
+     *
+     * @param {Vector | {x: number, y: number}} a
+     * @param {Vector | {x: number, y: number}} b
+     * @return {Number} the angle between the two vectors
+     */
 
-			return (dot._value[0] + dot._value[1]) / (magA * magB);
-		}
-	}, {
-		key: 'dot',
+    value: function angleRad(a, b) {
+      return Math.acos(Vector.angleCos(a, b));
+    }
+  }, {
+    key: 'angleDeg',
 
-		/**
-   * Get the dot product of two vectors
-   *
-   * @param {Vector | {x: number, y: number}} a
-   * @param {Vector | {x: number, y: number}} b
-   * @return {Number} the dot product
-   */
+    /**
+     * Get the angle between two vectors in degress
+     *
+     * @param {Vector | {x: number, y: number}} a
+     * @param {Vector | {x: number, y: number}} b
+     * @return {Number} the degree between the two vectors
+     */
 
-		value: function dot(a, b) {
-			var magA = Vector.len(a);
-			var magB = Vector.len(b);
+    value: function angleDeg(a, b) {
+      return Vector.angleRad(a, b) * RAD;
+    }
+  }, {
+    key: 'angleCos',
 
-			return Math.acos(Vector.mul(a, b) / (magA * magB));
-		}
-	}, {
-		key: 'clone',
+    /**
+     * Get the angle between two vectors in cosin
+     *
+     * @param {Vector | {x: number, y: number}} a
+     * @param {Vector | {x: number, y: number}} b
+     * @return {Number} the angle between the two vectors before `Math.acos()`
+     */
 
-		/*
-  		Helper methods
-  	*/
+    value: function angleCos(a, b) {
+      var magA = Vector.len(a);
+      var magB = Vector.len(b);
 
-		value: function clone(a) {
-			return new Vector(a._value[0], a._value[1]);
-		}
-	}, {
-		key: 'equals',
-		value: function equals(a, b) {
-			return a._value[0] === b._value[0] && a._value[1] === b._value[1];
-		}
-	}]);
+      var dot = Vector.mul(a, b);
 
-	return VectorClass;
+      return (dot._value[0] + dot._value[1]) / (magA * magB);
+    }
+  }, {
+    key: 'dot',
+
+    /**
+     * Get the dot product of two vectors
+     *
+     * @param {Vector | {x: number, y: number}} a
+     * @param {Vector | {x: number, y: number}} b
+     * @return {Number} the dot product
+     */
+
+    value: function dot(a, b) {
+      var magA = Vector.len(a);
+      var magB = Vector.len(b);
+
+      return Math.acos(Vector.mul(a, b) / (magA * magB));
+    }
+  }, {
+    key: 'clone',
+
+    /*
+       Helper methods
+     */
+
+    value: function clone(a) {
+      return new Vector(a._value[0], a._value[1]);
+    }
+  }, {
+    key: 'equals',
+    value: function equals(a, b) {
+      return a._value[0] === b._value[0] && a._value[1] === b._value[1];
+    }
+  }]);
+
+  return VectorClass;
 })();
 
 // Convertion from ES6 to factory. Code stolen from `https://github.com/timoxley/to-factory`
 
 var Vector = function Vector(x, y) {
-	return new VectorClass(x, y);
+  return new VectorClass(x, y);
 };
 
 Vector.__proto__ = VectorClass;
