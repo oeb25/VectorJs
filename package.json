@@ -1,7 +1,7 @@
 {
   "name": "vectorjs",
   "version": "0.1.2",
-  "description": "A 2D vector libary.",
+  "description": "A 2D vector class.",
   "main": "index.js",
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 # VectorJs
 
-A 2D Vector libary for JavaScript. That's it!
+A 2D Vector class for JavaScript. That's it!
 
 ## Installation
 
