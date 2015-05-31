@@ -8,8 +8,8 @@
     "url": "https://github.com/oeb25/VectorJs"
   },
   "scripts": {
-    "build": "browserify ./lib/vector.js -t babelify -o index.js -s vectorjs",
-    "test": "./node_modules/mocha/bin/mocha"
+    "build": "browserify ./lib/vector.js -t babelify -s vectorjs | ./node_modules/uglify-js/bin/uglifyjs > index.js -m -r 'Vector'",
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel/register"
   },
   "keywords": [
     "vector",
@@ -19,8 +19,10 @@
   "author": "Oliver Bøving",
   "license": "MIT",
   "devDependencies": {
+    "babel": "^5.4.7",
     "babelify": "^6.1.2",
     "browserify": "^10.2.3",
-    "mocha": "^2.2.5"
+    "mocha": "^2.2.5",
+    "uglify-js": "^2.4.23"
   }
 }
