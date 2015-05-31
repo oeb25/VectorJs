@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "browserify ./lib/vector.js -t babelify -o index.js -s vectorjs",
-    "test": "mocha"
+    "test": "./node_modules/mocha/bin/mocha"
   },
   "keywords": [
     "vector",
