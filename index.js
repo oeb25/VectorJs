@@ -27,12 +27,30 @@ var VectorClass = (function () {
 		return (function () {
 			_classCallCheck(this, VectorClass);
 
-			this.x = x;
-			this.y = y;
+			this._value = new Float32Array(2);
+
+			this._value[0] = x;
+			this._value[1] = y;
 		}).apply(this, arguments);
 	}
 
 	_createClass(VectorClass, [{
+		key: 'x',
+		get: function () {
+			return this._value[0];
+		},
+		set: function (x) {
+			this._value[0] = x;
+		}
+	}, {
+		key: 'y',
+		get: function () {
+			return this._value[1];
+		},
+		set: function (y) {
+			this._value[1] = y;
+		}
+	}, {
 		key: 'add',
 
 		/*
@@ -96,7 +114,7 @@ var VectorClass = (function () {
 	}, {
 		key: 'clone',
 		value: function clone() {
-			return new Vector(this.x, this.y);
+			return new Vector(this._value[0], this._value[1]);
 		}
 	}, {
 		key: 'equals',
@@ -106,7 +124,7 @@ var VectorClass = (function () {
 	}, {
 		key: 'toString',
 		value: function toString() {
-			return '' + this.x + ',' + this.y;
+			return '' + this._value[0] + ',' + this._value[1];
 		}
 	}], [{
 		key: 'add',
@@ -127,7 +145,10 @@ var VectorClass = (function () {
 		value: function add(a, b) {
 			if (typeof b === 'number') b = new Vector(b);
 
-			return new Vector(a.x + b.x, a.y + b.y);
+			var x = a._value[0] + b._value[0];
+			var y = a._value[1] + b._value[1];
+
+			return new Vector(x, y);
 		}
 	}, {
 		key: 'sub',
@@ -144,7 +165,10 @@ var VectorClass = (function () {
 		value: function sub(a, b) {
 			if (typeof b === 'number') b = new Vector(b);
 
-			return new Vector(a.x - b.x, a.y - b.y);
+			var x = a._value[0] - b._value[0];
+			var y = a._value[1] - b._value[1];
+
+			return new Vector(x, y);
 		}
 	}, {
 		key: 'mul',
@@ -161,7 +185,10 @@ var VectorClass = (function () {
 		value: function mul(a, b) {
 			if (typeof b === 'number') b = new Vector(b);
 
-			return new Vector(a.x * b.x, a.y * b.y);
+			var x = a._value[0] * b._value[0];
+			var y = a._value[1] * b._value[1];
+
+			return new Vector(x, y);
 		}
 	}, {
 		key: 'div',
@@ -178,7 +205,10 @@ var VectorClass = (function () {
 		value: function div(a, b) {
 			if (typeof b === 'number') b = new Vector(b);
 
-			return new Vector(a.x / b.x, a.y / b.y);
+			var x = a._value[0] / b._value[0];
+			var y = a._value[1] / b._value[1];
+
+			return new Vector(x, y);
 		}
 	}, {
 		key: 'len',
@@ -191,7 +221,10 @@ var VectorClass = (function () {
    */
 
 		value: function len(a) {
-			return Math.sqrt(a.x * a.x + a.y * a.y);
+			var x = a._value[0] * a._value[0];
+			var y = a._value[1] * a._value[1];
+
+			return Math.sqrt(x + y);
 		}
 	}, {
 		key: 'lenSq',
@@ -205,7 +238,10 @@ var VectorClass = (function () {
    */
 
 		value: function lenSq(a) {
-			return a.x * a.x + a.y * a.y;
+			var x = a._value[0] * a._value[0];
+			var y = a._value[1] * a._value[1];
+
+			return x + y;
 		}
 	}, {
 		key: 'normalize',
@@ -220,7 +256,7 @@ var VectorClass = (function () {
 		value: function normalize(a) {
 			var mag = Vector.len(a);
 
-			return new Vector(a.x / mag, a.y / mag);
+			return new Vector(a._value[0] / mag, a._value[1] / mag);
 		}
 	}, {
 		key: 'angle',
@@ -281,7 +317,7 @@ var VectorClass = (function () {
 
 			var dot = Vector.mul(a, b);
 
-			return (dot.x + dot.y) / (magA * magB);
+			return (dot._value[0] + dot._value[1]) / (magA * magB);
 		}
 	}, {
 		key: 'dot',
@@ -308,12 +344,12 @@ var VectorClass = (function () {
   	*/
 
 		value: function clone(a) {
-			return new Vector(a.x, a.y);
+			return new Vector(a._value[0], a._value[1]);
 		}
 	}, {
 		key: 'equals',
 		value: function equals(a, b) {
-			return a.x === b.x && a.y === b.y;
+			return a._value[0] === b._value[0] && a._value[1] === b._value[1];
 		}
 	}]);
 

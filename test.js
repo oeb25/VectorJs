@@ -105,8 +105,11 @@ describe('Vector', function() {
 			var result = a.div(b);
 
 			it("should return the first vector divded by the last", function() {
-				assert.equal(a.x / b.x, result.x);
-				assert.equal(a.y / b.y, result.y);
+				var x = Math.round((a.x / b.x) * 10000);
+				var y = Math.round((a.y / b.y) * 10000);
+
+				assert.equal(x, Math.round(result.x * 10000));
+				assert.equal(y, Math.round(result.y * 10000));
 			});
 		});
 
