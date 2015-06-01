@@ -9,7 +9,8 @@
   },
   "scripts": {
     "build": "browserify ./lib/vector.js -t babelify -s vectorjs | ./node_modules/uglify-js/bin/uglifyjs > index.js -m -r 'Vector'",
-    "test": "./node_modules/mocha/bin/mocha --compilers js:babel/register"
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel/register",
+    "patch": "npm version patch && npm publish && git push --follow-tags"
   },
   "keywords": [
     "vector",
