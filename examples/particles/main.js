@@ -10,7 +10,7 @@ document.body.appendChild(canvas);
 
 let particles = [];
 
-const trails = false;
+const trails = true;
 
 function addParticle(amt = 1) {
   particles.push({
@@ -25,14 +25,16 @@ function addParticle(amt = 1) {
 
 let last = 0;
 
-const draw = (a) => {
-  let delta = a - last;
-  last = a;
+const loop = (time) => {
+  let delta = time - last;
+  last = time;
 
-  let fps = 16 / delta;
+  requestAnimationFrame(loop);
+  tick(delta);
+  draw(delta);
+};
 
-  requestAnimationFrame(draw);
-
+const tick = (delta) => {
   addParticle((delta / 16) * 10);
 
   particles = particles.map(particle => {
@@ -58,6 +60,10 @@ const draw = (a) => {
       pos, vel, speed
     };
   });
+}
+
+const draw = (delta) => {
+  let fps = (16 / delta) * 60;
 
   if (trails) {
     ctx.fillStyle = 'rgba(10,10,10,0.2)';
@@ -67,7 +73,7 @@ const draw = (a) => {
 
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  var color = ctx.fillStyle = `hsl(${((fps) * 120).toString(10)},100%,50%)`;
+  var color = ctx.fillStyle = `hsl(${(fps * 2).toString(10)},100%,50%)`;
 
   particles.forEach(particle => {
     ctx.beginPath();
@@ -80,8 +86,8 @@ const draw = (a) => {
 
   ctx.fillStyle = color;
 
-  ctx.fillText('FPS: ' + Math.floor(fps * 60), 10, 15);
+  ctx.fillText('FPS: ' + Math.floor(fps), 10, 15);
   ctx.fillText('Particles: ' + particles.length, 10, 25);
-};
+}
 
-draw();
+loop();

@@ -5,26 +5,34 @@
 	<title>Welcome</title>
 	<style>
 		* {
-			margin: 0;
-			padding: 0;
 			overflow: hidden;
 		}
 
-		body {
-			font-family: sans-serif;
-		}
-
-		canvas {
+		body, canvas {
+			margin: 0;
+			padding: 0;
 			width: 100%;
 			height: 100vh;
+			font-family: sans-serif;
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: #fff;
+		}
+
+		li {
+			overflow: visible;
 		}
 	</style>
 </head>
 <body>
 	<script src="main.js"></script>
-	<h1>You may need to run '<code>$ npm install</code>' for this to work!</h1>
-	<br>
-	<h1>This example is written in <code>ES6</code> and will have to be transpiled to be run!</h1>
-	<h3>May I suggest trying <a href="https://github.com/oeb25/livecompiler">livecompiler</a>? [TODO]</h3>
+
+	<h1>Follow these steps to run the example</h1>
+	<ol>
+		<li>Run <code>$ npm install</code> to install dependencies</li>
+		<li>Run <code>$ npm start</code> to run local server</li>
+		<li>Vist <a href="http://localhost:3000">localhost:3000</a></li>
+	</ol>
 </body>
 </html>

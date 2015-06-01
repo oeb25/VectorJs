@@ -1,7 +1,7 @@
 # VectorJs
 
 [![Join the chat at https://gitter.im/oeb25/VectorJs](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/oeb25/VectorJs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![Travis tesing](https://travis-ci.org/oeb25/VectorJs.svg?branch=master)](https://travis-ci.org/oeb25/VectorJs)
+[![Travis testing](https://travis-ci.org/oeb25/VectorJs.svg?branch=master)](https://travis-ci.org/oeb25/VectorJs)
 
 A 2D Vector class for JavaScript. That's it!
 
@@ -153,7 +153,7 @@ a.len() <=> Vector.len(a)
 
 ## Motivation
 
-In the past weeks, I've wrote multiple vector classes for every single one of my games, each with a diff rent implementation. I needed something that was as simple as `v(2, 1).add(3)` and was easy to install. If you're looking for a super high performance vector library for rendering thousands of particles, this one might not be the one. Although if you do, [send it to me please](mailto:lvrmlbvng@gmail.com)!
+In the past weeks, I've wrote multiple vector classes for every single one of my games, each with a different implementation. I needed something that was as simple as `v(2, 1).add(3)` and was easy to install. If you're looking for a super high performance vector library for rendering thousands of particles, this one might not be the one. Although if you do, [send it to me please](mailto:lvrmlbvng@gmail.com)!
 
 ## Misconceptions
 

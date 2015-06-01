@@ -4,11 +4,12 @@
   "description": "An example usage of the vector library VectorJs",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "./node_modules/livn/bin/livn"
   },
   "author": "Oliver Bøving",
   "license": "MIT",
   "dependencies": {
+    "livn": "^0.1.0",
     "vectorjs": "^0.1.9"
   }
 }
